@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <form action="/sign-up" method="POST">
+        <label for="email">Enter email: </label>
+        <input type="email" name="email" id="email" required>
+        <br>
+        <label for="username">Enter username: </label>
+        <input type="text" name="username" id="username" required>
+        <br>
+        <label for="firstname">Enter first name: </label>
+        <input type="text" name="firstname" id="firstname" required>
+        <br>
+        <label for="lastname">Enter last name: </label>
+        <input type="text" name="lastname" id="lastname" required>
+        <br>
+        <label for="password">Enter password: </label>
+        <input type="password" name="password" id="password" required>
+        <br>
+        <label for="passwordConfirmation">Enter password again: </label>
+        <input type="password" name="passwordConfirmation" id="passwordConfirmation" required>
+        <br>
+        <label for="secretMemberPassword">Enter secret member password: (optional)</label>
+        <input type="password" name="secretMemberPassword" id="secretMemberPassword">
+        <br>
+        <input type="checkbox" name="admin" value="true"> Admin?
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -13,7 +13,9 @@ async function displayMessagesGet(req, res) {
 }
 
 async function signUpFormGet(req, res) {
-    res.send("<h1>Sign-up Form will be displayed here - wip </h1>")
+    res.render("sign-up", {
+        title: "Sign Up",
+    })
 }
 
 async function loginFormGet(req, res) {
@@ -22,7 +24,8 @@ async function loginFormGet(req, res) {
 }
 
 async function signUpFormPost(req, res) {
-
+    console.log(req.body)
+    res.redirect("/login")
 }
 
 async function loginFormPost(req, res) {
