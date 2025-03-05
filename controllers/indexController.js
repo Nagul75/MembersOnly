@@ -1,6 +1,7 @@
-
+const db = require('../db/queries')
 
 async function displayMessagesGet(req, res) {
+    await db.getMessages()
     res.send("<h1>Messages will be displayed here- wip </h1>")
 }
 
