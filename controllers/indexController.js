@@ -1,8 +1,15 @@
 const db = require('../db/queries')
 
 async function displayMessagesGet(req, res) {
-    await db.getMessages()
-    res.send("<h1>Messages will be displayed here- wip </h1>")
+    if(!req.user) {
+        res.redirect("/sign-up")
+    }
+
+    const messages = await db.getMessages()
+    res.render("home.ejs", {
+        title: "Feed",
+        messages: messages
+    })
 }
 
 async function signUpFormGet(req, res) {
