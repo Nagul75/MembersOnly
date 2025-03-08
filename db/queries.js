@@ -7,12 +7,12 @@ async function getMessages() {
 
 async function addUser(user) {
     if(user.admin) {
-        const userArr = [user.firstname, user.lastname, user.password, user.email, user.membership, Boolean(user.admin)]
-        await pool.query("INSERT INTO USERS (firstname, lastname, password, email, membership, username, admin) VALUES $1, $2, $3, $4, $5, $6, $7", userArr)
+        const userArr = [user.firstname, user.lastname, user.password, user.email, user.membership, user.username, Boolean(user.admin)]
+        await pool.query("INSERT INTO USERS (firstname, lastname, password, email, membership, username, admin) VALUES ($1, $2, $3, $4, $5, $6, $7)", userArr)
     }
     else {
         const userArr = [user.firstname, user.lastname, user.password, user.email, user.membership, false]
-        await pool.query("INSERT INTO USERS (firstname, lastname, password, email, membership, username, admin) VALUES $1, $2, $3, $4, $5, $6, $7", userArr)
+        await pool.query("INSERT INTO USERS (firstname, lastname, password, email, membership, username, admin) VALUES ($1, $2, $3, $4, $5, $6, $7)", userArr)
     }
 }
 
