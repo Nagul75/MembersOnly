@@ -8,7 +8,7 @@ Exclusive clubhouse where your members can write anonymous posts. Inside the clu
 
 * ~~When users sign up, they should not be automatically given membership status! What fun is a private club if just anyone can join? Add a page where members can “join the club” by entering a secret passcode. If they enter the passcode correctly then update their membership status.~~
 
-* Create a login-form using passport.js.
+* ~~Create a login-form using passport.js.~~
 
 * When a user is logged in give them a link to “Create a new message” (but only show it if they’re logged in!). Create the new-message form.
 

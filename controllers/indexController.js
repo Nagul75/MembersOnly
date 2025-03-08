@@ -74,7 +74,7 @@ async function loginFormPost(req, res, next) {
         if (!user) {
             return res.redirect('/login');  // If user is not found, redirect to login
         }
-    
+
         req.login(user, (err) => {  // Log the user in and create a session
             if (err) {
                 return next(err);  // Handle login error
