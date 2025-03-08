@@ -59,6 +59,7 @@ const signUpFormPost = [
         } else {
             req.body.membership = false
         }
+        req.body.password = bcrypt.hashSync(req.body.password, 10)
         await db.addUser(req.body)
     }
 ]
