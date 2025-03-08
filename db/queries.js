@@ -18,5 +18,5 @@ async function addUser(user) {
 
 module.exports = {
     getMessages,
-    addUser
+    addUser,
 }
