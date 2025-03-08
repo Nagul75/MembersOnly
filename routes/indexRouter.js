@@ -11,5 +11,6 @@ indexRouter.get("/login", indexController.loginFormGet)
 
 indexRouter.post("/sign-up", indexController.signUpFormPost)
 indexRouter.post("/login", indexController.loginFormPost)
+indexRouter.get('/logout', indexController.logoutGet)
 
 module.exports = indexRouter

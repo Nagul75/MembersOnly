@@ -1,6 +1,7 @@
 const db = require('../db/queries')
 const bcrypt = require('bcryptjs')
 const {body, validationResult} = require('express-validator')
+const passport = require('../auth/passport')
 
 const alphaErr = 'must only contain alphabets.'
 
@@ -65,8 +66,31 @@ const signUpFormPost = [
     }
 ]
 
-async function loginFormPost(req, res) {
+async function loginFormPost(req, res, next) {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return next(err);  // Handle error, if any
+        }
+        if (!user) {
+            return res.redirect('/login');  // If user is not found, redirect to login
+        }
+    
+        req.login(user, (err) => {  // Log the user in and create a session
+            if (err) {
+                return next(err);  // Handle login error
+            }
+            return res.redirect('/');  // Redirect to home page after successful login
+        });
+    })(req, res, next);  // This part invokes the passport.authenticate() function with req, res, next
+}
 
+async function logoutGet(req, res, next) {
+    req.logout((err) => {
+        if(err) {
+            return next(err)
+        }
+        res.redirect("/login")
+    })
 }
 
 
@@ -75,5 +99,6 @@ module.exports = {
     signUpFormGet,
     signUpFormPost,
     loginFormGet,
-    loginFormPost
+    loginFormPost,
+    logoutGet
 }
