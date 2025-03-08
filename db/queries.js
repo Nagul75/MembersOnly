@@ -8,15 +8,20 @@ async function getMessages() {
 async function addUser(user) {
     if(user.admin) {
         const userArr = [user.firstname, user.lastname, user.password, user.email, user.membership, user.username, Boolean(user.admin)]
-        await pool.query("INSERT INTO USERS (firstname, lastname, password, email, membership, username, admin) VALUES ($1, $2, $3, $4, $5, $6, $7)", userArr)
+        await pool.query("INSERT INTO users (firstname, lastname, password, email, membership, username, admin) VALUES ($1, $2, $3, $4, $5, $6, $7)", userArr)
     }
     else {
         const userArr = [user.firstname, user.lastname, user.password, user.email, user.membership, user.username, false]
-        await pool.query("INSERT INTO USERS (firstname, lastname, password, email, membership, username, admin) VALUES ($1, $2, $3, $4, $5, $6, $7)", userArr)
+        await pool.query("INSERT INTO users (firstname, lastname, password, email, membership, username, admin) VALUES ($1, $2, $3, $4, $5, $6, $7)", userArr)
     }
+}
+
+async function createNewMessage(id, title, message) {
+    await pool.query("INSERT INTO messages (id, title, message) VALUES ($1, $2, $3)", [id, title, message])
 }
 
 module.exports = {
     getMessages,
     addUser,
+    createNewMessage
 }

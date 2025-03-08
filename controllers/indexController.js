@@ -30,7 +30,8 @@ async function displayMessagesGet(req, res) {
     const messages = await db.getMessages()
     res.render("home.ejs", {
         title: "Feed",
-        messages: messages
+        messages: messages,
+        user: req.user
     })
 }
 
@@ -93,6 +94,16 @@ async function logoutGet(req, res, next) {
     })
 }
 
+async function newMessageFormGet(req, res) {
+    res.render("newMessageForm", {
+        title: "New Message"
+    })
+}
+
+async function newMessageFormPost(req, res) {
+    await db.createNewMessage(req.user.id, req.body.title, req.body.message)
+    res.redirect("/")
+}
 
 module.exports = {
     displayMessagesGet,
@@ -100,5 +111,7 @@ module.exports = {
     signUpFormPost,
     loginFormGet,
     loginFormPost,
-    logoutGet
+    logoutGet,
+    newMessageFormGet,
+    newMessageFormPost
 }
