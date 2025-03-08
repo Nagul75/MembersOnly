@@ -40,8 +40,9 @@ async function signUpFormGet(req, res) {
 }
 
 async function loginFormGet(req, res) {
-    res.send("<h1>Login Form will be displayed here - wip </h1>")
-
+    res.render("login", {
+        title: "login",
+    })
 }
 
 const signUpFormPost = [
