@@ -1,4 +1,5 @@
 const db = require('../db/queries')
+const bcrypt = require('bcryptjs')
 const {body, validationResult} = require('express-validator')
 
 const alphaErr = 'must only contain alphabets.'
@@ -53,7 +54,12 @@ const signUpFormPost = [
                 errors: errors.array(),
             })
         }
-        //insert code to query database (insert)
+        if(req.body.secretMemberPassword === "kitty") {
+            req.body.membership = true
+        } else {
+            req.body.membership = false
+        }
+        await db.addUser(req.body)
     }
 ]
 
