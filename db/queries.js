@@ -11,7 +11,7 @@ async function addUser(user) {
         await pool.query("INSERT INTO USERS (firstname, lastname, password, email, membership, username, admin) VALUES ($1, $2, $3, $4, $5, $6, $7)", userArr)
     }
     else {
-        const userArr = [user.firstname, user.lastname, user.password, user.email, user.membership, false]
+        const userArr = [user.firstname, user.lastname, user.password, user.email, user.membership, user.username, false]
         await pool.query("INSERT INTO USERS (firstname, lastname, password, email, membership, username, admin) VALUES ($1, $2, $3, $4, $5, $6, $7)", userArr)
     }
 }
