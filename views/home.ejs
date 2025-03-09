@@ -21,6 +21,9 @@
                     <div class="message">
                         <%= message.title %> -
                         <%= message.message %>
+                        <% if (message.admin) { %>
+                        <button><a href="/delete/<%= message.message_id %>">Delete Message</a></button>
+                        <% } %>
                     </div>
                 </li>
             <% }) %>

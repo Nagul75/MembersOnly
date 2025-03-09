@@ -104,6 +104,12 @@ async function newMessageFormPost(req, res) {
     res.redirect("/")
 }
 
+async function deleteMessageGet(req, res) {
+    const message_id = req.params.id
+    await db.deleteMessage(message_id)
+    res.redirect("/")
+}
+
 module.exports = {
     displayMessagesGet,
     signUpFormGet,
@@ -112,5 +118,6 @@ module.exports = {
     loginFormPost,
     logoutGet,
     newMessageFormGet,
-    newMessageFormPost
+    newMessageFormPost,
+    deleteMessageGet
 }

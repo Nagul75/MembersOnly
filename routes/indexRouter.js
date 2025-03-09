@@ -15,6 +15,8 @@ indexRouter.post("/sign-up", indexController.signUpFormPost)
 indexRouter.post("/login", indexController.loginFormPost)
 indexRouter.post('/new-message', indexController.newMessageFormPost)
 
+indexRouter.get("/delete/:id", indexController.deleteMessageGet)
+
 
 
 module.exports = indexRouter
