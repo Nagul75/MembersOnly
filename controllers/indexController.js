@@ -31,7 +31,6 @@ async function displayMessagesGet(req, res) {
     res.render("home.ejs", {
         title: "Feed",
         messages: messages,
-        user: req.user
     })
 }
 

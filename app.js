@@ -4,6 +4,7 @@ const indexRouter = require('./routes/indexRouter')
 const pool = require('./db/pool')
 const pgStore = require('connect-pg-simple')(session)
 const passport = require('./auth/passport')
+const path = require('path')
 
 const app = express()
 
@@ -14,6 +15,7 @@ const sessionStore = new pgStore({
 })
 
 app.set("view engine", "ejs")
+app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({extended: true}))
 app.use(session({
     secret: "cats",
@@ -26,6 +28,11 @@ app.use(session({
 }))
 
 app.use(passport.session())
+
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+  });
 
 app.use("/", indexRouter)
 

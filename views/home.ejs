@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
     <h1><%= title %></h1>
@@ -11,11 +12,16 @@
     <ul>
         <% if(messages) { %>
             <% messages.forEach(message => { %>
+                <% if (locals.currentUser.membership) { %>
                 <li>
                     <%= message.firstname %>
+                    <%= message.created_at %>
+                    <% } %>
                     <br>
-                    <%= message.title %> -
-                    <%= message.message %>
+                    <div class="message">
+                        <%= message.title %> -
+                        <%= message.message %>
+                    </div>
                 </li>
             <% }) %>
         <% } %>
