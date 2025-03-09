@@ -14,6 +14,6 @@ Exclusive clubhouse where your members can write anonymous posts. Inside the clu
 
 * ~~Display all member messages on the home page, but only show the author and date of the messages to other club-members.~~
 
-* Add an optional field to the user model called Admin and then add the ability to delete messages, but only allow users who have admin == true to see the delete-button and delete messages. You’ll need to add a way to actually mark a user as an ‘admin’ so either add another secret pass-code page, or just put an “is admin” checkbox on the sign-up form.
+* ~~Add an optional field to the user model called Admin and then add the ability to delete messages, but only allow users who have admin == true to see the delete-button and delete messages. You’ll need to add a way to actually mark a user as an ‘admin’ so either add another secret pass-code page, or just put an “is admin” checkbox on the sign-up form.~~
 
 
